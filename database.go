@@ -26,10 +26,10 @@ func connectDB() *redis.Client {
 func sendToRedis(image Image) {
 	data := map[string]interface{}{
 
-		"imageName": image.Name,
-		"imageUrl":  image.ImageUrl,
-		"header":    "a",
-		"size":      image.Size,
+		"imageName":   image.Name,
+		"imageUrl":    image.ImageUrl,
+		"contentType": image.Header.Get("Content-Type"),
+		"size":        image.Size,
 	}
 	if err := rdb.HMSet(image.Name, data).Err(); err != nil {
 		panic(err)
