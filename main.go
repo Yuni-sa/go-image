@@ -1,6 +1,8 @@
 package main
 
 import (
+	"log"
+
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 )
@@ -16,5 +18,5 @@ func main() {
 
 	setupApp(app)
 
-	app.Listen(":4000")
+	log.Panicln(app.Listen(":4000"))
 }
